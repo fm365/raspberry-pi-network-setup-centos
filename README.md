@@ -8,8 +8,17 @@ A project to make setuping centos through network easier<br />
 使用树莓派 + Archlinux + tftp + dhcp + vsftp 来实现.<br />
 你只需要做的事就是搞一个ks.cfg, 放到指定的位置, 然后带着树莓派和USB供电线去机房就OK了.<br />
 
-下载地址：<br />
-(含centos5.3安装程序) http://kuai.xunlei.com/d/ikrmAgIQFwBd5EpS5d3
+下载地址
+================================
+
+* (含centos5.3安装程序, 密码请修改ks.cfg文件, 大小: 5.85G) http://kuai.xunlei.com/d/ikrmAgI6GgCfDUtSbbe
+* (纯净版, 即不含/srv/ftp/iso目录下的安装镜像, 大小: 529.1M) http://kuai.xunlei.com/d/ikrmAgKbGgAPFUtS6e4
+
+简要安装说明
+================================
+* 解压后是一个.img文件, 使用dd拷到你的SD卡上即可, 上电即可使用
+* 如果你下载的是精简版, 你还需要使用类似gparted的软件调整下分区大小, 以便有足够的空间可以在/srv/ftp/iso目录下面放安装镜像的解压缩的文件
+* 用户名和密码都是保持默认的root/root
 
 相关配置内容
 ================================
@@ -31,5 +40,6 @@ A project to make setuping centos through network easier<br />
 其他
 ================================
 * tftp, vsftp, dhcp已经设置为开机自启动了
+* ks.cfg 的生成请注意CentOS版本, 不同版本的CentOS的软件包可能有所出入, 不正确的软件包选择会导致自动安装停止
 * 现在还没有测试效率如何, 感觉树莓派的I/O是瓶颈, 不过现在给一台电脑装的话没啥响应速度问题
 * 在考虑是否有必要开发个网页界面用来显示安装进度, 毕竟现在看不多安装的进度
