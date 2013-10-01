@@ -11,8 +11,8 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript" src="javascripts/script.js"></script>
 
-  <title>Raspberry-pi-network-setup-centos</title>
-  <meta name="description" content="A project to make setuping centos through network easier">
+  <title>Raspberry PI Network Setup CentOS</title>
+  <meta name="description" content="一个让网络安装centos更轻松的项目">
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -22,30 +22,66 @@
 
   <div class="wrapper">
     <header>
-      <h1 class="title">Raspberry-pi-network-setup-centos</h1>
+      <h1 class="title">Raspberry PI Network Setup CentOS</h1>
     </header>
     <div id="container">
-      <p class="tagline">A project to make setuping centos through network easier</p>
+      <p class="tagline">一个让网络安装centos更轻松的项目</p>
       <div id="main" role="main">
         <div class="download-bar">
         <div class="inner">
           <a href="https://github.com/ety001/raspberry-pi-network-setup-centos/tarball/master" class="download-button tar"><span>Download</span></a>
           <a href="https://github.com/ety001/raspberry-pi-network-setup-centos/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/ety001/raspberry-pi-network-setup-centos" class="code">View Raspberry-pi-network-setup-centos on GitHub</a>
+          <a href="https://github.com/ety001/raspberry-pi-network-setup-centos" class="code">View Raspberry PI Network Setup CentOS on GitHub</a>
         </div>
         <span class="blc"></span><span class="trc"></span>
         </div>
         <article class="markdown-body">
           <h1>
-<a name="raspberry-pi-network-setup-centos" class="anchor" href="#raspberry-pi-network-setup-centos"><span class="octicon octicon-link"></span></a>raspberry-pi-network-setup-centos</h1>
+<a name="raspberry-pi-network-setup-centos" class="anchor" href="#raspberry-pi-network-setup-centos"><span class="octicon octicon-link"></span></a>Raspberry PI Network Setup CentOS</h1>
 
-<p>A project to make setuping centos through network easier</p>
+<p>A project to make setuping centos through network easier<br></p>
+
+<p>一个让网络安装centos更轻松的项目.<br></p>
+
+<p>使用树莓派 + Archlinux + tftp + dhcp + vsftp 来实现.<br>
+你只需要做的事就是搞一个ks.cfg, 放到指定的位置, 然后带着树莓派和USB供电线去机房就OK了.<br></p>
+
+<p>下载地址：<br>
+(含centos5.3安装程序) <a href="http://kuai.xunlei.com/d/ikrmAgIQFwBd5EpS5d3">http://kuai.xunlei.com/d/ikrmAgIQFwBd5EpS5d3</a></p>
+
+<h1>
+<a name="%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E5%86%85%E5%AE%B9" class="anchor" href="#%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E5%86%85%E5%AE%B9"><span class="octicon octicon-link"></span></a>相关配置内容</h1>
+
+<ul>
+<li>tftp, ftp的存储目录位于 /srv</li>
+<li>/srv/ftp/ 下面放置ks.cfg</li>
+<li>/srv/ftp/iso 下面放置centos的安装iso解压后的文件</li>
+<li>/srv/tftp 下面放置网络启动需要的引导文件</li>
+<li>/srv/tftp/pxelinux.cfg/default 该配置文件中配置ks文件的网络地址, 如果你修改来raspberry pi的ip的话, 就需要修改这里</li>
+<li>/etc/dhcpd.conf DHCP的配置文件, 默认分配 192.168.100.1 到 192.168.100.200 的 IP, 也就是说默认是只支持这么多机器同时安装</li>
+<li>/usr/lib/systemd/system/tftpd.service 可以修改tftp的目录, 默认目录/srv/tftp</li>
+<li>/etc/conf.d/network@eth0 可以修改本机的IP地址, 子网掩码, 广播地址, 网关地址, 默认值分别是: 192.168.100.250, 24, 192.168.100.255, 192.168.100.250</li>
+</ul><h1>
+<a name="%E7%9B%B8%E5%85%B3%E7%9A%84%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4" class="anchor" href="#%E7%9B%B8%E5%85%B3%E7%9A%84%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="octicon octicon-link"></span></a>相关的控制命令</h1>
+
+<ul>
+<li>tftp -- systemctl status tftpd.socket</li>
+<li>vsftp -- systemctl status vsftpd.service</li>
+<li>dhcp -- systemctl status dhcpd4.service</li>
+</ul><h1>
+<a name="%E5%85%B6%E4%BB%96" class="anchor" href="#%E5%85%B6%E4%BB%96"><span class="octicon octicon-link"></span></a>其他</h1>
+
+<ul>
+<li>tftp, vsftp, dhcp已经设置为开机自启动了</li>
+<li>现在还没有测试效率如何, 感觉树莓派的I/O是瓶颈, 不过现在给一台电脑装的话没啥响应速度问题</li>
+<li>在考虑是否有必要开发个网页界面用来显示安装进度, 毕竟现在看不多安装的进度</li>
+</ul>
         </article>
       </div>
     </div>
     <footer>
       <div class="owner">
-      <p><a href="https://github.com/ety001" class="avatar"><img src="https://2.gravatar.com/avatar/6c9c45db7996e4951959119399ecf80b?d=https%3A%2F%2Fidenticons.github.com%2F39af778693427e2430c303ba5f8b6b4a.png&amp;s=30" width="48" height="48"/></a> <a href="https://github.com/ety001">ety001</a> maintains <a href="https://github.com/ety001/raspberry-pi-network-setup-centos">Raspberry-pi-network-setup-centos</a></p>
+      <p><a href="https://github.com/ety001" class="avatar"><img src="https://1.gravatar.com/avatar/6c9c45db7996e4951959119399ecf80b?d=https%3A%2F%2Fidenticons.github.com%2F39af778693427e2430c303ba5f8b6b4a.png&amp;s=30" width="48" height="48"/></a> <a href="https://github.com/ety001">ety001</a> maintains <a href="https://github.com/ety001/raspberry-pi-network-setup-centos">Raspberry PI Network Setup CentOS</a></p>
 
 
       </div>
