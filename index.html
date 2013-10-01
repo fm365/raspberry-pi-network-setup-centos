@@ -1,33 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Raspberry PI Network Setup CentOS by ety001</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Raspberry PI Network Setup CentOS : 一个让网络安装centos更轻松的项目" />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Raspberry PI Network Setup CentOS</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Raspberry PI Network Setup CentOS</h1>
-        <p>一个让网络安装centos更轻松的项目</p>
 
-        <p class="view"><a href="https://github.com/ety001/raspberry-pi-network-setup-centos">View the Project on GitHub <small>ety001/raspberry-pi-network-setup-centos</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ety001/raspberry-pi-network-setup-centos">View on GitHub</a>
 
+          <h1 id="project_title">Raspberry PI Network Setup CentOS</h1>
+          <h2 id="project_tagline">一个让网络安装centos更轻松的项目</h2>
 
-        <ul>
-          <li><a href="https://github.com/ety001/raspberry-pi-network-setup-centos/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/ety001/raspberry-pi-network-setup-centos/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/ety001/raspberry-pi-network-setup-centos">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ety001/raspberry-pi-network-setup-centos/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ety001/raspberry-pi-network-setup-centos/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a name="raspberry-pi-network-setup-centos" class="anchor" href="#raspberry-pi-network-setup-centos"><span class="octicon octicon-link"></span></a>Raspberry PI Network Setup CentOS</h1>
 
@@ -38,10 +41,22 @@
 <p>使用树莓派 + Archlinux + tftp + dhcp + vsftp 来实现.<br>
 你只需要做的事就是搞一个ks.cfg, 放到指定的位置, 然后带着树莓派和USB供电线去机房就OK了.<br></p>
 
-<p>下载地址：<br>
-(含centos5.3安装程序) <a href="http://kuai.xunlei.com/d/ikrmAgIQFwBd5EpS5d3">http://kuai.xunlei.com/d/ikrmAgIQFwBd5EpS5d3</a></p>
-
 <h1>
+<a name="%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80" class="anchor" href="#%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="octicon octicon-link"></span></a>下载地址</h1>
+
+<ul>
+<li>(含centos5.3安装程序, 密码请修改ks.cfg文件, 大小: 5.85G) <a href="http://kuai.xunlei.com/d/ikrmAgI6GgCfDUtSbbe">http://kuai.xunlei.com/d/ikrmAgI6GgCfDUtSbbe</a>
+</li>
+<li>(纯净版, 即不含/srv/ftp/iso目录下的安装镜像, 大小: 529.1M) <a href="http://kuai.xunlei.com/d/ikrmAgKbGgAPFUtS6e4">http://kuai.xunlei.com/d/ikrmAgKbGgAPFUtS6e4</a>
+</li>
+</ul><h1>
+<a name="%E7%AE%80%E8%A6%81%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E" class="anchor" href="#%E7%AE%80%E8%A6%81%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E"><span class="octicon octicon-link"></span></a>简要安装说明</h1>
+
+<ul>
+<li>解压后是一个.img文件, 使用dd拷到你的SD卡上即可, 上电即可使用</li>
+<li>如果你下载的是精简版, 你还需要使用类似gparted的软件调整下分区大小, 以便有足够的空间可以在/srv/ftp/iso目录下面放安装镜像的解压缩的文件</li>
+<li>用户名和密码都是保持默认的root/root</li>
+</ul><h1>
 <a name="%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E5%86%85%E5%AE%B9" class="anchor" href="#%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E5%86%85%E5%AE%B9"><span class="octicon octicon-link"></span></a>相关配置内容</h1>
 
 <ul>
@@ -65,16 +80,22 @@
 
 <ul>
 <li>tftp, vsftp, dhcp已经设置为开机自启动了</li>
+<li>ks.cfg 的生成请注意CentOS版本, 不同版本的CentOS的软件包可能有所出入, 不正确的软件包选择会导致自动安装停止</li>
 <li>现在还没有测试效率如何, 感觉树莓派的I/O是瓶颈, 不过现在给一台电脑装的话没啥响应速度问题</li>
 <li>在考虑是否有必要开发个网页界面用来显示安装进度, 毕竟现在看不多安装的进度</li>
 </ul>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/ety001">ety001</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Raspberry PI Network Setup CentOS maintained by <a href="https://github.com/ety001">ety001</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
     
+
   </body>
 </html>
